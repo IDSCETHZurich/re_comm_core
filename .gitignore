@@ -1,0 +1,6 @@
+.settings/*
+*.pyc
+user.db
+.classpath
+.project
+.pydevproject
