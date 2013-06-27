@@ -118,7 +118,7 @@ public class REConnectionHadoop implements REInterface {
 	/**
 	 * Base URL to the RoboEarth web interface
 	 */
-	public final static String roboEarthBaseURL = "http://82.130.80.188:8000";
+	public final static String roboEarthBaseURL = "http://10.0.3.1:8000";
 
 	/**
 	 * API key for the REST interface to the RoboEarth DB

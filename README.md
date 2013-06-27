@@ -1,4 +1,4 @@
 re_comm_core
 ============
 
-re_comm_core temporary repository
+Don't forget to update roboearth ip in RE_Connection_Hadoop.java and recompile
