@@ -15,7 +15,7 @@ Installation
 7. rosmake re_srvs and re_msgs
 8. Make sure Roboearth is running
 8. Run roscore
-9. Run re_comm.py
+9. Run py_re_comm.py
 10. try running re_client.py to test if everything works
 11. Read re_client.py for how to use other services
 
@@ -25,4 +25,4 @@ Usage
 1. Add py_re_comm to ROS_PACKAGE_PATH
 2. Make sure Roboearth is running
 3. Run roscore
-4. Run re_comm.py
+4. Run py_re_comm.py
