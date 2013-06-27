@@ -150,13 +150,13 @@ def generate(name, size):
     return file2
 
 def benchmark_set_object():
-    rospy.wait_for_service('/re_comm/set_object')
+    rospy.wait_for_service('/py_re_comm/set_object')
     name = 'toto'
     final = []
     for i in xrange(len(_sizes)):
         try:
             file1 = generate(name, _sizes[i])
-            add_two_ints = rospy.ServiceProxy('/re_comm/set_object', srv.SetObject)
+            add_two_ints = rospy.ServiceProxy('/py_re_comm/set_object', srv.SetObject)
             start = time.time()
             resp = add_two_ints('bottle',name+str(i),'', OWL, (file1,), '3334736b6e6179616da12cfc2c2224378a8cc74d37a2be17420cf6dfd5')
             end = time.time()
@@ -166,12 +166,12 @@ def benchmark_set_object():
     return final
 
 def benchmark_get_object():
-    rospy.wait_for_service('/re_comm/get_object')
+    rospy.wait_for_service('/py_re_comm/get_object')
     name = 'toto'
     final = []
     for i in xrange(len(_sizes)):
         try:
-            add_two_ints = rospy.ServiceProxy('/re_comm/get_object', srv.GetObject)
+            add_two_ints = rospy.ServiceProxy('/py_re_comm/get_object', srv.GetObject)
             start = time.time()
             resp = add_two_ints('bottle.'+name+str(i))
             end = time.time()
@@ -181,12 +181,12 @@ def benchmark_get_object():
     return final
 
 def undo_benchmark_set_object():
-    rospy.wait_for_service('/re_comm/del_object')
+    rospy.wait_for_service('/py_re_comm/del_object')
     name = 'toto'
     
     for i in xrange(len(_sizes)):
         try:
-            add_two_ints = rospy.ServiceProxy('/re_comm/del_object', srv.DelObject)
+            add_two_ints = rospy.ServiceProxy('/py_re_comm/del_object', srv.DelObject)
             resp = add_two_ints('bottle.'+name+str(i), '3334736b6e6179616da12cfc2c2224378a8cc74d37a2be17420cf6dfd5')
         except rospy.ServiceException, e:
             print "Service call failed: %s"%e
@@ -311,16 +311,6 @@ def del_object():
     except rospy.ServiceException, e:
         print "Service call failed: %s"%e
 
-def set_binary():
-    file1 = filetoint8('jussu.zip')
-    
-    rospy.wait_for_service('/re_comm/set_environment_binary_file')
-    try:
-        add_two_ints = rospy.ServiceProxy('/re_comm/set_environment_binary_file', srv.SetEnvironmentBinaryFile)
-        resp = add_two_ints('demo_map.coffee', file1, '3334736b6e6179616da12cfc2c2224378a8cc74d37a2be17420cf6dfd5')
-        return resp
-    except rospy.ServiceException, e:
-        print "Service call failed: %s"%e
 
 if __name__ == "__main__":
     
